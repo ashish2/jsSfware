@@ -12,6 +12,8 @@ module.exports = {
 	   * id,
 	   *
 	   * */
+	   
+	   // v0.1
 	   username: 'string',
 	   password: 'string',
 	   firstname: 'string',
@@ -19,7 +21,15 @@ module.exports = {
 	   posts: {
 		   collection: 'post',
 		   via: 'user'
-	   }
+	   },
+	   
+	   // Added v0.2
+	   displaypic: 'string',
+	   messages: {
+		   collection: 'message', 
+		   via: 'touser'
+		}
+
   }
 };
 

@@ -12,6 +12,7 @@ module.exports = {
 	   * Asset like img link which can be screenshot of their terminal or (ubuntu) desktop etc and also some .sh script
 	   * id, link_of_img_sh_file, created, updated, active
 	   * */
+	   
 
 
   }

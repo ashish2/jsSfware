@@ -18,6 +18,17 @@ module.exports = {
 	   *
 	   * */
 	   
+	   
+	   /*
+	   sails> Post.createEach(
+	   [
+		{content: "c1", images: {link: "l1"}, user: 1}, 
+		{content: "c2", images: {link: "l2"}, user: 1}
+		]
+		).exec(function(err, r) { console.log("err", err); console.log("r", r); })
+		*/
+		
+
 	   content: {
 		   type: 'string'
 	   },

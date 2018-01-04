@@ -12,6 +12,8 @@ module.exports = {
   attributes: {
 	  
 	  link: 'string',
+	  filenameunique: 'string',
+	  filenameoriginal: 'string',
 	  post: {
 		  model: 'post',
 	  }

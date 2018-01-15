@@ -21,6 +21,17 @@ module.exports = {
 	});
 	 * */
 	
+	login: function(req, res) {
+		// Authentication code here
+		// If successfully authenticated
+		
+		///if ( req.body.email isEmpty || req.body.password isEmpty)
+			///return res.json(Error);
+		
+		///req.session.user = user;
+		///return res.json(user);
+		
+	}
 	
 };
 

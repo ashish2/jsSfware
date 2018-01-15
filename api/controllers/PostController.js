@@ -11,6 +11,7 @@ module.exports = {
 	// adore: function (req, res) { res.send("I adore pets"); }
 	
 	// Upload File to servers disk
+	// Default routeName: /post/upload.
 	upload: function (req, res) {
 		// e.g.
 		// 0 => infinite
@@ -19,7 +20,16 @@ module.exports = {
 		//
 		// Node defaults to 2 minutes.
 		res.setTimeout(0);
-
+		
+		console.log("req. body", req.body);
+		console.log("req.allParms().content", req.allParams().content);
+		
+		// function to Clean & sanitize, validate, content here
+		// Library function
+		//function sanitize() {}
+		content = req.allParams().content;
+		
+		
 		req.file('uploads')
 		.upload({
 			
@@ -29,7 +39,8 @@ module.exports = {
 		  //dirname: require('path').resolve(sails.config.appPath, 'uploads/1/terminal')
 		},
 		function whenDone(err, uploadedFiles) {
-		  if (err) return res.serverError(err);
+		  if (err) 
+			return res.serverError(err);
 		  else {
 			  //console.log("success");
 			// TODO: Once the files have been uploaded, rename uploaded image files & make entry in DB also
@@ -40,12 +51,13 @@ module.exports = {
 			  //console.log("uploadedFiles", uploadedFiles);
 			  //console.log("typeof uploadedFiles", typeof uploadedFiles);
 			  
-			  arrayOfDicts = [];
+			  //arrayOfDicts = [];
 			  
 			  postDict = {};
-			  postDict.content = "content by u1";
+			  postDict.content = content;
 			  postDict.images = [];
-			  postDict.user = 1;
+			  postDict.user = 5;
+			  
 			  
 			  for( e in uploadedFiles) {
 				  /*
@@ -67,8 +79,11 @@ module.exports = {
 				  postDict.images[e].filenameoriginal = uploadedFiles[e].filename.substring(1);
 			  }
 			  
+			  // No need to do a return on Post.create(). But i wonder why?
 			  //return Post.createEach( arrayOfDicts).exec(function(err, succ) { 
-			  return Post.create( postDict ).exec(function(err, succ) { 
+			  //return Post.create( postDict ).exec(function(err, succ) { 
+			  Post.create( postDict ).exec(function(err, succ) { 
+				  
 				  if (err) {
 					  //console.log("err", err); 
 					  return err;
@@ -83,6 +98,7 @@ module.exports = {
 					}
 				}
 				);
+				
 			  /*
 			  return res.json({
 				files: uploadedFiles,
@@ -94,6 +110,8 @@ module.exports = {
 		});
 		
 	},
+	
+	
 
 
 };
